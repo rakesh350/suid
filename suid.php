@@ -3,23 +3,23 @@
 class suid {
 
     private $table_name;
-    private $conn_obj_obj;
+    private $conn_obj;
 
-    function __construct($table_name, $conn_obj_obj = "") {
+    function __construct($table_name, $conn_obj = "") {
         $this->table_name = $table_name;
-        $this->conn_obj = $conn_obj_obj;
+        $this->conn_obj = $conn_obj;
     }
 
-    public function store($student_array = array()) {
+    public function store($data_array = array()) {
 
-        if (!empty($student_array)) {
+        if (!empty($data_array)) {
             $insert_sql = "insert into $this->table_name (";
-            foreach ($student_array as $k => $v) {
+            foreach ($data_array as $k => $v) {
                 $insert_sql.=$k . " , ";
             }
             $insert_sql = substr($insert_sql, 0, -3);
             $insert_sql = $insert_sql . ") values (";
-            foreach ($student_array as $k => $v) {
+            foreach ($data_array as $k => $v) {
                 $insert_sql.="'" . $v . "', ";
             }
             $insert_sql = substr($insert_sql, 0, -2);
